@@ -21,34 +21,6 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					T1NJRA==
-					</data>
-					<key>Replace</key>
-					<data>
-					WFNJRA==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _OSI to XOSI</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					X09TSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WE9TSQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change _DSM to XDSM</string>
 					<key>Disabled</key>
 					<true/>
@@ -187,21 +159,6 @@
 					SUdQVQhfQURSDAAAAgA=
 					</data>
 				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>voodooi2c win10 dsdt-patch</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					X09TSSgiV2luZG93cyAyMDE1Iik=
-					</data>
-					<key>Replace</key>
-					<data>
-					TE9yKF9PU0koIkRhcndpbiIpLF9PU0koIldp
-					bmRvd3MgMjAxNSIpKQ==
-					</data>
-				</dict>
 			</array>
 		</dict>
 		<key>DropTables</key>
@@ -243,7 +200,7 @@
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>-v dart=0 nv_disable=1 kext-dev-mode=1 -disablegfxfirmware</string>
+		<string>-v dart=0 nv_disable=1 kext-dev-mode=1 keepsyms=1 -disablegfxfirmware</string>
 		<key>Debug</key>
 		<true/>
 		<key>DefaultVolume</key>
@@ -697,7 +654,7 @@
 				<key>Comment</key>
 				<string>0x591b0000, 32MB BIOS, 19MB framebuffer 9MB cursor bytes (credit RehabMan)</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
 				AABgAgAAUAE=
@@ -715,7 +672,7 @@
 				<key>Comment</key>
 				<string>0x591b0000, 0105 instead of 0306, HDMI</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
 				<data>
 				AgQKAAAIAACHAQAAAwYKAAAEAACHAQAA/wAAAAEAAAAg
