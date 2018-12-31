@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>#Comment</key>
-	<string>This file is for 10.12.6+ with native KabyLake support</string>
 	<key>ACPI</key>
 	<dict>
 		<key>AutoMerge</key>
@@ -135,7 +133,7 @@
 					<key>Comment</key>
 					<string>change PCI0.VID to IGPU #1 (Thinkpad)</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					UENJMFZJRF8=
@@ -149,7 +147,7 @@
 					<key>Comment</key>
 					<string>change PCI0.VID to IGPU #2 (Thinkpad)</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					VklEXwhfQURSDAAAAgA=
@@ -200,7 +198,7 @@
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>-v dart=0 nv_disable=1 kext-dev-mode=1 keepsyms=1 -disablegfxfirmware</string>
+		<string>nv_disable=1 dart=0 kext-dev-mode=1 keepsyms=1 -v -igfxdump</string>
 		<key>Debug</key>
 		<true/>
 		<key>DefaultVolume</key>
@@ -312,7 +310,7 @@
 				<key>Device</key>
 				<string>IntelGFX</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>hda-gfx</string>
 				<key>Value</key>
@@ -322,7 +320,7 @@
 				<key>Device</key>
 				<string>IntelGFX</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Key</key>
 				<string>APPL,GfxYTile</string>
 				<key>Value</key>
@@ -345,6 +343,109 @@
 			<key>#Kaby Lake-Comment</key>
 			<string>To avoid automatic Clover fake device-id (Skylake) injection</string>
 		</dict>
+		<key>Properties</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key># DVMT-prealloc</key>
+				<string>32MB BIOS, 19MB framebuffer, 9MB cursor bytes (credit RehabMan)</string>
+				<key>#1 0306-&gt;0105</key>
+				<string>0x591b0000, 0105 instead of 0306, HDMI</string>
+				<key>#1 framebuffer-con1-alldata</key>
+				<data>
+				AQUKAAAIAACHAQAAAgQKAAAIAACHAQAA/wAAAAEAAAAg
+				AAAA
+				</data>
+				<key>#1 framebuffer-con1-enable</key>
+				<integer>1</integer>
+				<key>#2 0204-&gt;0105</key>
+				<string>0x591b0000, 0105 instead of 0204, HDMI</string>
+				<key>#2 framebuffer-con1-alldata</key>
+				<data>
+				AQUKAAAIAACHAQAAAwYKAAAEAACHAQAA/wAAAAEAAAAg
+				AAAA
+				</data>
+				<key>#2 framebuffer-con1-enable</key>
+				<integer>1</integer>
+				<key>#3 framebuffer-con1-alldata</key>
+				<data>
+				/wAAAAEAAAAgAAAA/wAAAAEAAAAgAAAA/wAAAAEAAAAg
+				AAAA
+				</data>
+				<key>#3 framebuffer-con1-enable</key>
+				<integer>1</integer>
+				<key>#3 no external</key>
+				<string>0x591b0000, eliminate all external ports (0204 and 0306)</string>
+				<key>#device-id</key>
+				<data>
+				FlkAAA==
+				</data>
+				<key>#framebuffer-con0-enable</key>
+				<integer>1</integer>
+				<key>#framebuffer-con0-type</key>
+				<data>
+				AAQAAA==
+				</data>
+				<key>#framebuffer-con1-enable</key>
+				<integer>1</integer>
+				<key>#framebuffer-con1-flags</key>
+				<data>
+				hwEAAA==
+				</data>
+				<key>#framebuffer-con1-pipe</key>
+				<data>
+				EgAAAA==
+				</data>
+				<key>#framebuffer-con1-type</key>
+				<data>
+				AAgAAA==
+				</data>
+				<key>#framebuffer-con2-enable</key>
+				<integer>1</integer>
+				<key>#framebuffer-con2-flags</key>
+				<data>
+				hwEAAA==
+				</data>
+				<key>#framebuffer-con2-pipe</key>
+				<data>
+				EgAAAA==
+				</data>
+				<key>#framebuffer-con2-type</key>
+				<data>
+				AAgAAA==
+				</data>
+				<key>#framebuffer-con3-enable</key>
+				<integer>1</integer>
+				<key>#framebuffer-con3-flags</key>
+				<data>
+				hwEAAA==
+				</data>
+				<key>#framebuffer-con3-pipe</key>
+				<data>
+				EgAAAA==
+				</data>
+				<key>#framebuffer-con3-type</key>
+				<data>
+				AAgAAA==
+				</data>
+				<key>#hda-gfx</key>
+				<string>onboard-1</string>
+				<key>AAPL,ig-platform-id</key>
+				<data>
+				AAAbWQ==
+				</data>
+				<key>framebuffer-fbmem</key>
+				<data>
+				AACQAA==
+				</data>
+				<key>framebuffer-patch-enable</key>
+				<integer>1</integer>
+				<key>framebuffer-stolenmem</key>
+				<data>
+				AAAwAQ==
+				</data>
+			</dict>
+		</dict>
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
@@ -361,8 +462,6 @@
 	</array>
 	<key>GUI</key>
 	<dict>
-		<key>#ScreenResolution</key>
-		<string>1920x1080</string>
 		<key>Custom</key>
 		<dict>
 			<key>Entries</key>
@@ -428,7 +527,7 @@
 			<key>ATI</key>
 			<false/>
 			<key>Intel</key>
-			<true/>
+			<false/>
 			<key>NVidia</key>
 			<false/>
 		</dict>
@@ -476,7 +575,7 @@
 				<key>Comment</key>
 				<string>change F%uT%04x to F%uTxxxx in AppleBacklightInjector.kext (credit RehabMan)</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				RiV1VCUwNHgA
@@ -492,7 +591,7 @@
 			</dict>
 			<dict>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				AgQKAAAIAACHAQAAAwYKAAAEAACHAQAA/wAAAAEAAAAg
@@ -654,7 +753,7 @@
 				<key>Comment</key>
 				<string>0x591b0000, 32MB BIOS, 19MB framebuffer 9MB cursor bytes (credit RehabMan)</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				AABgAgAAUAE=
@@ -672,7 +771,7 @@
 				<key>Comment</key>
 				<string>0x591b0000, 0105 instead of 0306, HDMI</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>Find</key>
 				<data>
 				AgQKAAAIAACHAQAAAwYKAAAEAACHAQAA/wAAAAEAAAAg
@@ -704,17 +803,17 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>08/08/2017</string>
+		<string>09/28/2018</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBP141.88Z.0167.B00.1708080034</string>
+		<string>MBP143.88Z.F000.B00.1809280842</string>
 		<key>Board-ID</key>
-		<string>Mac-B4831CEBD52A0C4C</string>
+		<string>Mac-551B86E5744E2388</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>XX-MASKED-XX</string>
+		<string>C02738600QXJ1JHAD</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -725,10 +824,12 @@
 		<string>Apple Inc.</string>
 		<key>ChassisType</key>
 		<string>0x09</string>
+		<key>EfiVersion</key>
+		<string>185.0.0.0.0</string>
 		<key>Family</key>
 		<string>MacBook Pro</string>
 		<key>FirmwareFeatures</key>
-		<string>0xFC0FE136</string>
+		<string>0xFC0FE13F</string>
 		<key>FirmwareFeaturesMask</key>
 		<string>0xFF1FFF3F</string>
 		<key>LocationInChassis</key>
@@ -770,13 +871,15 @@
 		<key>PlatformFeature</key>
 		<string>0x1A</string>
 		<key>ProductName</key>
-		<string>MacBookPro14,1</string>
+		<string>MacBookPro14,3</string>
 		<key>ProductName-Comment</key>
 		<string>Using Haswell MacBookAir6,2 until Clover has support for KabyLake identifiers</string>
 		<key>SerialNumber</key>
-		<string>XX-MASKED-XX</string>
+		<string>C02VFXZ6HTD5</string>
 		<key>SmUUID</key>
-		<string>XX-MASKED-XX</string>
+		<string>33A24107-BE98-456A-B454-6F6BA709699F</string>
+		<key>Trust</key>
+		<false/>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
