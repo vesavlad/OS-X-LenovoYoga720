@@ -79,7 +79,7 @@
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>dart=0 nv_disable=1 kext-dev-mode=1</string>
+		<string>nv_disable=1 dart=0 kext-dev-mode=1 alcid=11</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -149,10 +149,8 @@
 		</array>
 		<key>Audio</key>
 		<dict>
-			<key>AFGLowPowerState</key>
-			<true/>
 			<key>Inject</key>
-			<integer>1</integer>
+			<integer>11</integer>
 			<key>ResetHDA</key>
 			<true/>
 		</dict>
