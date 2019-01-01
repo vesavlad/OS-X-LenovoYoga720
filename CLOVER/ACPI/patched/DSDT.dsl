@@ -5285,10 +5285,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 PMES,   1
             }
 
-            Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
-            {
-                Return (GPRW (0x6D, 0x04))
-            }
+            
 
             Method (_DSW, 3, NotSerialized)  // _DSW: Device Sleep Wake
             {
@@ -5308,6 +5305,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     Notify (GLAN, 0x02) // Device Wake
                 }
             }
+            Method(_PRW) { Return(Package() { 0x0D, 0 }) }
         }
     }
 
@@ -5339,63 +5337,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             }
 
             Name (XFLT, Zero)
-            Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
-            {
-                ADBG ("_DSM")
-                Local0 = (XADH << 0x20)
-                Local0 |= XADL /* \_SB_.PCI0.XHC_.XADL */
-                Local0 &= 0xFFFFFFFFFFFFFFF0
-                OperationRegion (XMIO, SystemMemory, Local0, 0x9000)
-                Field (XMIO, AnyAcc, Lock, Preserve)
-                {
-                    Offset (0x550), 
-                    PCCS,   1, 
-                        ,   4, 
-                    PPLS,   4, 
-                    PTPP,   1, 
-                    Offset (0x8420), 
-                    PRTM,   2
-                }
-
-                If (PCIC (Arg0))
-                {
-                    Return (PCID (Arg0, Arg1, Arg2, Arg3))
-                }
-
-                If ((Arg0 == ToUUID ("ac340cb7-e901-45bf-b7e6-2b34ec931e23")))
-                {
-                    If ((Arg1 == 0x03))
-                    {
-                        XFLT = Arg1
-                    }
-
-                    If (((PRTM > Zero) && ((Arg1 == 0x05) || (Arg1 == 0x06))))
-                    {
-                        ADBG ("SSIC")
-                        If ((((PCCS == Zero) || (PTPP == Zero)) || ((
-                            PPLS >= 0x04) && (PPLS <= 0x0F))))
-                        {
-                            If ((PPLS == 0x08))
-                            {
-                                D3HE = One
-                            }
-                            Else
-                            {
-                                D3HE = Zero
-                            }
-                        }
-                        Else
-                        {
-                            D3HE = One
-                        }
-                    }
-                }
-
-                Return (Buffer (One)
-                {
-                     0x00                                             // .
-                })
-            }
+            
 
             Method (_S3D, 0, NotSerialized)  // _S3D: S3 Device State
             {
@@ -5429,10 +5371,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 }
             }
 
-            Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
-            {
-                Return (GPRW (0x6D, 0x03))
-            }
+            
 
             Method (_DSW, 3, NotSerialized)  // _DSW: Device Sleep Wake
             {
@@ -6234,6 +6173,21 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     }
                 }
             }
+            Method(_PRW) { Return(Package() { 0x0D, 0 }) }
+            Method (_DSM, 4, NotSerialized)
+            {
+                If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
+                Return (Package()
+                {
+                    "subsystem-id", Buffer() { 0x70, 0x72, 0x00, 0x00 },
+                    "subsystem-vendor-id", Buffer() { 0x86, 0x80, 0x00, 0x00 },
+                    "AAPL,current-available", 2100,
+                    "AAPL,current-extra", 2200,
+                    "AAPL,current-extra-in-sleep", 1600,
+                    "AAPL,device-internal", 0x02,
+                    "AAPL,max-port-current-in-sleep", 2100,
+                })
+            }
         }
     }
 
@@ -6719,10 +6673,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 }
             }
 
-            Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
-            {
-                Return (GPRW (0x6D, 0x04))
-            }
+            
 
             Method (_DSW, 3, NotSerialized)  // _DSW: Device Sleep Wake
             {
@@ -6743,6 +6694,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     Notify (XDCI, 0x02) // Device Wake
                 }
             }
+            Method(_PRW) { Return(Package() { 0x0D, 0 }) }
         }
     }
 
@@ -6772,10 +6724,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 PMEE = Arg0
             }
 
-            Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake
-            {
-                Return (GPRW (0x6D, 0x04))
-            }
+            
 
             Method (GPEH, 0, NotSerialized)
             {
@@ -6978,6 +6927,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     }
                 }
             }
+            Method(_PRW) { Return(Package() { 0x0D, 0 }) }
         }
 
         Device (RP01)
