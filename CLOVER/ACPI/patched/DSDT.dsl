@@ -18319,6 +18319,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
         Method (_INI, 0, Serialized)  // _INI: Initialize
         {
             OSYS = 0x07D0
+            OSYS = 0x07DF
             If (CondRefOf (\_OSI))
             {
                 If ((_OSI ("Darwin") || _OSI ("Linux")))
