@@ -306,6 +306,8 @@
 				</dict>
 			</array>
 		</dict>
+		<key>EmbeddedThemeType</key>
+		<string>Dark</string>
 		<key>Hide</key>
 		<array>
 			<string>Preboot</string>
@@ -329,7 +331,7 @@
 		<key>ScreenResolution</key>
 		<string>1920x1080</string>
 		<key>Theme</key>
-		<string>BGM</string>
+		<string>embedded</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
